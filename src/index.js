@@ -78,17 +78,25 @@ function Home() {
     return (<div></div>)
 }
 
+function ContentContainer(props) {
+    return (
+        <div className="content__container">
+            {props.children}
+        </div>
+    )
+}
+
 function App() {
     return (
         <Router>
-            <div>
-                <Header/>
+            <Route path="/" component={Header} />
+            <ContentContainer>
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route path="/events" component={Events} />
                     <Route path="/plex" component={Plex} />
                 </Switch>
-            </div>
+            </ContentContainer>
         </Router>
     );
 }
