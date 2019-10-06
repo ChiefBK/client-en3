@@ -6,7 +6,6 @@ module.exports = {
     mode: 'development',
     entry: {
         app: './src/index.js',
-        print: './src/print.js',
     },
     devtool: 'inline-source-map',
     devServer: {
@@ -15,7 +14,8 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'EN3'
+            title: 'EN3',
+            template: "index-template.html"
         })
     ],
     output: {
