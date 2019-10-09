@@ -1,0 +1,32 @@
+.navigation__container {
+  ul {
+    display: flex;
+    justify-content: space-around;
+    padding-inline-start: 0;
+    flex-wrap: wrap;
+  }
+
+  a {
+    letter-spacing: 2px;
+    color: rgba(128, 128, 128, 0.4);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  li {
+    list-style-type: none;
+    width: 50px;
+    opacity: 10%;
+
+    &:first-of-type {
+      flex-basis: 100%;
+    }
+
+    .navigation__header-icon {
+      background-image: url("../logo.svg");
+      background-repeat: no-repeat;
+      background-position: center center;
+      height: 30px;
+    }
+  }
+}

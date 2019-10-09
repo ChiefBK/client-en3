@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
-import './app.scss';
+import './styles/app.scss';
 
 function Events() {
     return (
@@ -61,13 +61,13 @@ function Header() {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/events" className="header-link">Events</Link>
+                    <Link to="/events">Events</Link>
                 </li>
                 <li>
-                    <Link to="/" className="header-link">Home</Link>
+                    <Link to="/">Home</Link>
                 </li>
                 <li>
-                    <Link to="/plex" className="header-link">Plex</Link>
+                    <Link to="/plex">Plex</Link>
                 </li>
             </ul>
         </nav>
