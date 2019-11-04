@@ -11,15 +11,25 @@
     color: rgba(128, 128, 128, 0.4);
     text-decoration: none;
     cursor: pointer;
+
+    &.text-link-header {
+      padding: 5px;
+    }
+
+    &.selected {
+      border: gray 1px solid;
+    }
   }
 
   li {
     list-style-type: none;
-    width: 50px;
+    width: 100px;
     opacity: 10%;
+    text-align: center;
 
     &:first-of-type {
       flex-basis: 100%;
+      margin-bottom: 10px;
     }
 
     .navigation__header-icon {
