@@ -4,23 +4,44 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 import './styles/app.scss';
 
-function Events() {
-    return (
-        <div>
-            <h2>Events</h2>
-            <div className="event__list-container">
-                <div className="event__list-item">
-                    BBQ at the beach
-                </div>
-                <div className="event__list-item">
-                    Birthday Party!
-                </div>
-                <div className="event__list-item">
-                    Housewarming
+class Events extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { events: [] };
+    }
+
+    componentDidMount() {
+        fetch('/api/events', {
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+            .then((res) => res.json())
+            .then((eventArr) => {
+                this.setState({
+                    events: eventArr
+                })
+            })
+    }
+
+    render() {
+        const events = [];
+
+        for (const event of this.state.events) {
+            events.push(<div className="event__list-item" key={ event.id }>{ event.name }</div>);
+        }
+
+        return (
+            <div>
+                <h2>Events</h2>
+                <div className="event__list-container">
+                    <hr />
+                    { events }
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
 
 function Plex({ match }) {
@@ -93,7 +114,7 @@ function App() {
             <ContentContainer>
                 <Switch>
                     <Route exact path="/" component={Home} />
-                    <Route path="/events" component={Events} />
+                    <Route path="/events" component={() => <Events />} />
                     <Route path="/plex" component={Plex} />
                 </Switch>
             </ContentContainer>
