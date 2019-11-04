@@ -3,121 +3,23 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 import './styles/app.scss';
-
-class Events extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = { events: [] };
-    }
-
-    componentDidMount() {
-        fetch('/api/events', {
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-            .then((res) => res.json())
-            .then((eventArr) => {
-                this.setState({
-                    events: eventArr
-                })
-            })
-    }
-
-    render() {
-        const events = [];
-
-        for (const event of this.state.events) {
-            events.push(<div className="event__list-item" key={ event.id }>{ event.name }</div>);
-        }
-
-        return (
-            <div>
-                <h2>Events</h2>
-                <div className="event__list-container">
-                    <hr />
-                    { events }
-                </div>
-            </div>
-        );
-    }
-}
-
-function Plex({ match }) {
-    return <h3>Plex</h3>;
-}
-
-// function Plex(a) {
-//     return (
-//         <div>
-//             <h2>Topics</h2>
-//
-//             <ul>
-//                 <li>
-//                     <Link to={`${a.match.url}/components`}>Components</Link>
-//                 </li>
-//                 <li>
-//                     <Link to={`${a.match.url}/props-v-state`}>Props v. State</Link>
-//                 </li>
-//             </ul>
-//
-//             <Route path={`${a.match.path}/:id`} component={Topic} />
-//             <Route
-//                 exact
-//                 path={a.match.path}
-//                 render={() => <h3>Please select a topic.</h3>}
-//             />
-//         </div>
-//     );
-// }
-
-function Header() {
-    return (
-        <nav className="navigation__container">
-            <ul>
-                <li>
-                    <Link to="/">
-                        <div className="navigation__header-icon"></div>
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/events">Events</Link>
-                </li>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <Link to="/plex">Plex</Link>
-                </li>
-            </ul>
-        </nav>
-    );
-}
-
-function Home() {
-    return (<div></div>)
-}
-
-function ContentContainer(props) {
-    return (
-        <div className="content__container">
-            {props.children}
-        </div>
-    )
-}
+import Events from './components/pages/events'
+import Header from './components/header'
+import Home from './components/pages/home'
+import PageContentContainer from "./components/pages/page-content-container";
+import Plex from "./components/pages/plex";
 
 function App() {
     return (
         <Router>
             <Route path="/" component={Header} />
-            <ContentContainer>
+            <PageContentContainer>
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route path="/events" component={() => <Events />} />
                     <Route path="/plex" component={Plex} />
                 </Switch>
-            </ContentContainer>
+            </PageContentContainer>
         </Router>
     );
 }
