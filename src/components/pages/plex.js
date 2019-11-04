@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function Plex({ match }) {
     return <h3>Plex</h3>;
 }
