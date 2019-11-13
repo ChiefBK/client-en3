@@ -11,7 +11,6 @@ import Plex from "./components/pages/plex";
 import './styles/app.scss';
 
 class App extends React.Component {
-
     constructor(props) {
         super(props);
     }
@@ -29,7 +28,6 @@ class App extends React.Component {
             </Router>
         );
     }
-
 }
 
 ReactDOM.render(
