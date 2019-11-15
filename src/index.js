@@ -7,6 +7,7 @@ import Header from './components/header'
 import Home from './components/pages/home'
 import PageContentContainer from "./components/pages/page-content-container";
 import Plex from "./components/pages/plex";
+import Login from "./components/pages/login";
 
 import './styles/app.scss';
 
@@ -23,6 +24,7 @@ class App extends React.Component {
                         <Route exact path="/" component={ Home } />
                         <Route path="/events" component={ Events } />
                         <Route path="/plex" component={ Plex } />
+                        <Route path={ `/login` } component={ Login }/>
                     </Switch>
                 </PageContentContainer>
             </Router>
