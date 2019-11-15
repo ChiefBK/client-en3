@@ -20,19 +20,19 @@ export default class InputPhoneNumber extends React.Component {
         const firstThree = numberString.slice(3, 6);
         const lastFour = numberString.slice(6, 10);
 
-        let formatedNumber = '';
+        let formattedNumber = '';
 
         if (areaCode.length > 0) {
-            formatedNumber += `(${areaCode})`;
+            formattedNumber += `(${areaCode})`;
         }
         if (firstThree.length > 0) {
-            formatedNumber += `-${firstThree}`;
+            formattedNumber += `-${firstThree}`;
         }
         if (lastFour.length > 0) {
-            formatedNumber += `-${lastFour}`;
+            formattedNumber += `-${lastFour}`;
         }
 
-        return formatedNumber;
+        return formattedNumber;
     };
 
     render() {
